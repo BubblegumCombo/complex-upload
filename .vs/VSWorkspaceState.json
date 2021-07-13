@@ -1,9 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\nginx",
-    "\\worker"
+    "\\nginx"
   ],
-  "SelectedNode": "\\docker-compose.yml",
+  "SelectedNode": "\\nginx\\default.conf",
   "PreviewInSolutionExplorer": false
 }
