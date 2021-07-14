@@ -1,22 +1,24 @@
 sudo: required
+language: generic
+
 services:
-	- docker
+  - docker
 
 before_install:
-	- docker build -t bubblegumcombo/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t bubblegumcombo/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-    - docker run -e CI=true bubblegumcombo/react-test npm test
+  - docker run -e CI=true bubblegumcombo/react-test npm test
 
 after_success:
-	- docker built -t bubblegumcombo/multi-client ./client
-	- docker built -t bubblegumcombo/multi-nginx ./nginx
-	- docker built -t bubblegumcombo/multi-server ./server
-	- docker built -t bubblegumcombo/multi-worker ./worker
-#log into docker cli 
-	- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-# take images and push to docker hub
-	- docker push bubblegumcombo/multi-client
-	- docker push bubblegumcombo/multi-nginx
-	- docker push bubblegumcombo/multi-server
-	- docker push bubblegumcombo/multi-worker
+  - docker build -t bubblegumcombo/multi-client ./client
+  - docker build -t bubblegumcombo/multi-nginx ./nginx
+  - docker build -t bubblegumcombo/multi-server ./server
+  - docker build -t bubblegumcombo/multi-worker ./worker
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push them to docker hub
+  - docker push bubblegumcombo/multi-client
+  - docker push bubblegumcombo/multi-nginx
+  - docker push bubblegumcombo/multi-server
+  - docker push bubblegumcombo/multi-worker
