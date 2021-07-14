@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\nginx"
+    "\\client",
+    "\\client\\ngnix",
+    "\\client\\src"
   ],
-  "SelectedNode": "\\nginx\\default.conf",
+  "SelectedNode": "\\client\\src\\App.test.js",
   "PreviewInSolutionExplorer": false
 }
